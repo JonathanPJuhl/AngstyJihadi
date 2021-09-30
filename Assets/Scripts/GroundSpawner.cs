@@ -21,10 +21,8 @@ public class GroundSpawner : MonoBehaviour
         SpawnPoint.x = (mapSize * 5);
         SpawnPoint.y = 0;
         SpawnPoint.z = (-mapSize * 5);
-        Debug.Log(SpawnPoint.ToString());
         
         groundTileSystem.transform.localScale = new Vector3(mapSize, 1f, mapSize);
-        Debug.Log(groundTileSystem.transform.localScale.ToString());
         GameObject temp = Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
         
     }
@@ -32,14 +30,11 @@ public class GroundSpawner : MonoBehaviour
     public void SpawnHardBoxes(float mapSize)
     {
         GameObject obstacleToSpawn = metalBox;
-        Debug.Log( -1.5 < (float)(-mapSize * mapSize));
         
         for (float z = -1.5f; z > -mapSize * mapSize * 2; z += -2)
         {   
-            Debug.Log("HEY1");
-        
             for (float x = 1.5f; x < mapSize * mapSize * 2; x += 2)
-            {Debug.Log("HEY2");
+            {
                 Vector3 position;
                 position.x = x;
                 position.z = z;
