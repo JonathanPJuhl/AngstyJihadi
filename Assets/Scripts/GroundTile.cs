@@ -5,10 +5,7 @@ public class GroundTile : MonoBehaviour
 
 
     GroundSpawner groundSpawn;
-    [SerializeField] GameObject coinPrefab;
-    [SerializeField] GameObject obstaclePrefab;
-    [SerializeField] GameObject obstacleHighPrefab;
-    [SerializeField] float obstacleHighChance = 0.2f;
+    [SerializeField] GameObject MetalBox;
 
 
     // Start is called before the first frame update
@@ -18,33 +15,13 @@ public class GroundTile : MonoBehaviour
 
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    groundSpawn.SpawnNextTile(true);
-    //    Destroy(gameObject, 2);
-    //}
-
-    // Update is called once per frame
-    /*void Update()
-    {
-        
-    }*/
-
-
     public void SpawnHardBoxes(float mapSize)
     {
-        //Which one to spawn
-        GameObject obstacleToSpawn = obstaclePrefab;
-        //float random = Random.Range(0f, 1f);
-        //if (random < obstacleHighChance)
-        //{
-        //    obstacleToSpawn = obstacleHighPrefab;
-        //}
+        GameObject obstacleToSpawn = MetalBox;
 
-        int obstSpawnIndex = Random.Range(2, 5);
-        Transform spawnpoint = transform.GetChild(obstSpawnIndex).transform;
         float z = -1.5f;
-        for (float x = 1.5f; x < mapSize; x+=2)
+        int counter = 0;
+        for (float x = 1.5f; counter < mapSize; x+=2)
         {
             if (x >= mapSize-1.5)
             {
@@ -55,9 +32,11 @@ public class GroundTile : MonoBehaviour
             position.x = x;
             position.z = z;
             position.y = 0f;
-            Instantiate(obstacleToSpawn, spawnpoint.position, Quaternion.identity, transform);
+            //Instantiate(obstacleToSpawn, position, Quaternion.identity, transform);
+            GameObject temp = Instantiate(obstacleToSpawn, transform);
+            temp.transform.position = position;
             z -= 2;
-
+            counter++;
         }
         // Instantiate(obstacleToSpawn, spawnpoint.position, Quaternion.identity, transform);
     }
