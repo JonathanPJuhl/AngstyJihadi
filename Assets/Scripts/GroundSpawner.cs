@@ -8,7 +8,7 @@ public class GroundSpawner : MonoBehaviour
     public int boxFrequency;
     Vector3 SpawnPoint;
 
-  //Make method for setting saizes in UI
+  //Make method for setting sizes in UI
 
     private void Start()
     {
@@ -48,60 +48,6 @@ public class GroundSpawner : MonoBehaviour
                 GameObject temp = Instantiate(obstacleToSpawn, transform);
 
                 temp.transform.position = position;
-            }
-        }
-        //GameObject obstacleToSpawn = metalBox;
-
-        //float z = -1.5f;
-        //int counter = 0;
-
-        //for (float x = 1.5f; x < mapSize*mapSize; x += 2)
-        //{
-        //    if (x >= mapSize*10 - 1.5)
-        //    {
-        //        x = 1.5f;
-        //        z = -1.5f;
-        //    }
-        //    Vector3 position;
-        //    position.x = x;
-        //    position.z = z;
-        //    position.y = 0f;
-
-        //    GameObject temp = Instantiate(obstacleToSpawn, transform);
-
-        //    temp.transform.position = position;
-
-        //    z -= 2;
-
-        //    counter++;
-        //}
-    }
-
-    public void FF()
-    {
-        GameObject obstacleToSpawn = metalBox;
-
-        int counter = 0;
-
-        for(float z = 1.5f; z < mapSize*mapSize; z += -2) {
-
-        for (float x = 1.5f; x < mapSize * mapSize; x += 2)
-        {
-            if (x >= mapSize * 10 - 1.5)
-            {
-                x = 1.5f;
-                z = -1.5f;
-            }
-            Vector3 position;
-            position.x = x;
-            position.z = z;
-            position.y = 0f;
-
-            GameObject temp = Instantiate(obstacleToSpawn, transform);
-
-            temp.transform.position = position;
-
-            counter++;
             }
         }
     }
