@@ -329,9 +329,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundTileSystem: {fileID: 5585280833053818219, guid: 6cf4257e5e6db164a94658c61a5e9248, type: 3}
+  edge: {fileID: 6448936955974819771, guid: 1b8b0da1f09fdfd4289461b26ccc6edb, type: 3}
   metalBox: {fileID: 3123380447643211431, guid: 7beffe1ae1d9ad44ba764aac884ed7c4, type: 3}
+  woodenBox: {fileID: 9091857997395499785, guid: 7adc73f03e75b794abc45692a74080b5, type: 3}
   mapSize: 5
-  boxFrequency: 50
+  boxFrequency: 10
 --- !u!4 &1260777253
 Transform:
   m_ObjectHideFlags: 0
