@@ -24,17 +24,17 @@ public class GroundSpawner : MonoBehaviour
         SpawnPoint.z = (-mapSize * 5);
         
         groundTileSystem.transform.localScale = new Vector3(mapSize, 1f, mapSize);
-        GameObject temp = Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
+        Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
 
-        SpawnEdges(mapSize, new Vector3(1,2, mapSize * mapSize * 2), new Vector3(-0.5f, 0.5f, -mapSize * mapSize));
-        SpawnEdges(mapSize, new Vector3(mapSize * mapSize * 2, 2, 1), new Vector3(mapSize * mapSize, 0.5f, -mapSize * mapSize *2 + 0.5f));
-        SpawnEdges(mapSize, new Vector3(mapSize * mapSize * 2, 2 , 1), new Vector3(mapSize * mapSize, 0.5f, 0.5f));
-        SpawnEdges(mapSize, new Vector3(1, 2 , mapSize * mapSize * 2), new Vector3(mapSize * mapSize * 2 -0.5f, 0.5f, -mapSize * mapSize));
+        SpawnEdges(new Vector3(1,2, mapSize * mapSize * 2), new Vector3(-0.5f, 0.5f, -mapSize * mapSize));
+        SpawnEdges(new Vector3(mapSize * mapSize * 2, 2, 1), new Vector3(mapSize * mapSize, 0.5f, -mapSize * mapSize *2 + 0.5f));
+        SpawnEdges(new Vector3(mapSize * mapSize * 2, 2 , 1), new Vector3(mapSize * mapSize, 0.5f, 0.5f));
+        SpawnEdges(new Vector3(1, 2 , mapSize * mapSize * 2), new Vector3(mapSize * mapSize * 2 -0.5f, 0.5f, -mapSize * mapSize));
         SpawnHardBoxes(mapSize, 2, 4);
         SpawnWoodenBoxes(2,5);
     }
 
-    public void SpawnEdges(float mapSize, Vector3 scale, Vector3 position)
+    public void SpawnEdges(Vector3 scale, Vector3 position)
     {
         GameObject obstacleToSpawn = edge;
         
