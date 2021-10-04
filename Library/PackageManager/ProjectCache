@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637686185276267480
-    m_Hash: 374222888
+      ticks: 637689610370213344
+    m_Hash: 466949265
   m_LockFileStatus:
     m_FilePath: D:/UNITY/ThrashTesting/AngstyJihadi/AngstyJihadi/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637686185276327500
-    m_Hash: 3670602499
+      ticks: 637689610370223344
+    m_Hash: 3744297950
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

@@ -24,7 +24,7 @@ public class GroundSpawner : MonoBehaviour
         SpawnPoint.z = (-mapSize * 5);
         
         groundTileSystem.transform.localScale = new Vector3(mapSize, 1f, mapSize);
-        Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
+        GameObject obstacleToSpawn2 = Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
 
         SpawnEdges(new Vector3(1,2, mapSize * mapSize * 2), new Vector3(-0.5f, 0.5f, -mapSize * mapSize));
         SpawnEdges(new Vector3(mapSize * mapSize * 2, 2, 1), new Vector3(mapSize * mapSize, 0.5f, -mapSize * mapSize *2 + 0.5f));
