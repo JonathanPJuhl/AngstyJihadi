@@ -8,30 +8,58 @@ public class GroundSpawner : MonoBehaviour
     public GameObject woodenBox;
     public int mapSize;
     public int boxFrequency;
+    public Canvas canvas;
     Vector3 SpawnPoint;
 
-  //Make method for setting sizes in UI
-
-    private void Start()
+    public void SpawnMap(string mapSize, string amountOfBoxes)
     {
-        SpawnPlane(5, 10);
+        int mapSizeInt = 0;
+        int boxLow = 0;
+        int boxHigh = 0;
+        if (mapSize == "Small")
+        {
+            mapSizeInt = 3;
+        }else if (mapSize == "Medium")
+        {
+            mapSizeInt = 4;
+        }else if (mapSize == "Large")
+        {
+            mapSizeInt = 5;
+        }
+        if(amountOfBoxes == "Few")
+        {
+            boxLow = 1;
+            boxHigh = 8;
+        }else if(amountOfBoxes == "Medium")
+        {
+            boxLow = 3;
+            boxHigh = 6;
+        }else if(amountOfBoxes == "Many")
+        {
+            boxLow = 2;
+            boxHigh = 4;
+        }
+
+        canvas.enabled = false;
+        SpawnPlane(mapSizeInt, boxLow, boxHigh);
+
     }
 
-    public void SpawnPlane(float mapSize, int boxFrequency)
+    public void SpawnPlane(float mapSize, int boxFrequencyLow, int boxFrequencyHigh)
     {
         SpawnPoint.x = (mapSize * 5);
         SpawnPoint.y = 0;
         SpawnPoint.z = (-mapSize * 5);
         
         groundTileSystem.transform.localScale = new Vector3(mapSize, 1f, mapSize);
-        Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
+        GameObject temp = Instantiate(groundTileSystem, SpawnPoint, Quaternion.identity);
 
-        SpawnEdges(new Vector3(1,2, mapSize * mapSize * 2), new Vector3(-0.5f, 0.5f, -mapSize * mapSize));
-        SpawnEdges(new Vector3(mapSize * mapSize * 2, 2, 1), new Vector3(mapSize * mapSize, 0.5f, -mapSize * mapSize *2 + 0.5f));
-        SpawnEdges(new Vector3(mapSize * mapSize * 2, 2 , 1), new Vector3(mapSize * mapSize, 0.5f, 0.5f));
-        SpawnEdges(new Vector3(1, 2 , mapSize * mapSize * 2), new Vector3(mapSize * mapSize * 2 -0.5f, 0.5f, -mapSize * mapSize));
-        SpawnHardBoxes(mapSize, 2, 4);
-        SpawnWoodenBoxes(2,5);
+        SpawnEdges(new Vector3(1,2, mapSize * 5 * 2), new Vector3(-0.5f, 0.5f, -mapSize * 5));
+        SpawnEdges(new Vector3(mapSize * 5 * 2, 2, 1), new Vector3(mapSize * 5, 0.5f, -mapSize * 5 *2 + 0.5f));
+        SpawnEdges(new Vector3(mapSize * 5 * 2, 2 , 1), new Vector3(mapSize * 5, 0.5f, 0.5f));
+        SpawnEdges(new Vector3(1, 2 , 5 * mapSize * 2), new Vector3(mapSize * 5 * 2 -0.5f, 0.5f, -mapSize * 5));
+        SpawnHardBoxes(mapSize, boxFrequencyLow, boxFrequencyHigh);
+        SpawnWoodenBoxes(mapSize, boxFrequencyLow, boxFrequencyHigh);
     }
 
     public void SpawnEdges(Vector3 scale, Vector3 position)
@@ -48,11 +76,11 @@ public class GroundSpawner : MonoBehaviour
 
         int toughness;
        
-        for (float z = -1.5f; z >= -mapSize * mapSize * 2; z += -toughness)
+        for (float z = -1.5f; z >= -mapSize * 5 * 2; z += -toughness)
         {  
              toughness = Random.Range(low, high);
           
-            for (float x = 1.5f; x <= mapSize * mapSize * 2; x += toughness)
+            for (float x = 1.5f; x <= mapSize * 5 * 2; x += toughness)
             {
                 toughness = Random.Range(low, high);
 
@@ -67,16 +95,16 @@ public class GroundSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnWoodenBoxes(int low, int high)
+    public void SpawnWoodenBoxes(float mapSize, int low, int high)
     {
         GameObject obstacleToSpawn = woodenBox;
         int toughness;
 
-        for (float z = -2.5f; z > -mapSize * mapSize * 2; z -= toughness)
+        for (float z = -2.5f; z > -mapSize * 5 * 2; z -= toughness)
         {
             toughness = Random.Range(low, high);
 
-            for (float x = 2.5f; x < mapSize * mapSize * 2; x += toughness)
+            for (float x = 2.5f; x < mapSize * 5 * 2; x += toughness)
             {
                 toughness = Random.Range(low, high);
                 Vector3 position;
